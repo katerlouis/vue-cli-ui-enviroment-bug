@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld :msg="message"/>
   </div>
 </template>
 
@@ -12,7 +12,17 @@ export default {
   name: 'app',
   components: {
     HelloWorld
-  }
+  },
+  computed: {
+  	message() {
+  		// if (process.env)
+  		if (process.env.VUE_APP_IS_LIBRARY) {
+  			return "Nice! Environment variable worked!"; 
+  		}
+
+  		return "This is default message, and not process var"
+  	}	
+  },
 }
 </script>
 
